@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# 🛍️ Product Store Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured **Product Store Dashboard** that allows administrators to manage different store types efficiently using a RESTful API. This backend API supports full CRUD operations and is ready to be integrated with any frontend dashboard.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[https://product-store-dashboard.vercel.app/](https://product-store-dashboard.vercel.app/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 📌 Features
 
-- Configure the top-level `parserOptions` property like this:
+- ✅ Get all store types with pagination
+- 🔍 View store type by ID
+- ➕ Create a new store type
+- ✏️ Update existing store types
+- 🌐 Multilingual support (Arabic / English)
+- 🖼️ Upload & assign icons for each type
+- 📦 JSON-based clean responses
+- 🔐 Ready for admin dashboards or inventory systems
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 📡 API Endpoints
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+| Method | Endpoint                                         | Description                |
+| ------ | ------------------------------------------------ | -------------------------- |
+| GET    | `/api/StoreTypes/GetAllTypes?page=1&pageSize=10` | Get paginated store types  |
+| GET    | `/api/StoreTypes/GetStoreTypeById/{id}`          | Get store type by ID       |
+| POST   | `/api/StoreTypes/CreateStoreType`                | Create new store type      |
+| PUT    | `/api/StoreTypes/UpdateStoreType/{id}`           | Update existing store type |
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+---
+
+## 🧪 Sample Request (POST)
+
+```bash
+curl -X 'POST' \
+  'http://your-ip-or-domain/Store.Api/api/StoreTypes/CreateStoreType' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "Id": "string",
+  "Name_Ar": "string",
+  "Name_En": "string",
+  "IsActive": true,
+  "Icon_path": "string"
+}'
 ```
